@@ -2,17 +2,17 @@ import java.util.OptionalInt;
 
 public class Person {
 
-    protected final String name;
-    protected final String surname;
-    protected int age = -1;
-    protected String address = null;
+    private final String name;
+    private final String surname;
+    private int age;
+    private String address = null;
 
     public PersonBuilder newChildBuilder() {
         PersonBuilder personBuilder = new PersonBuilder();
-        personBuilder.name = this.getName();
-        personBuilder.surname = this.getSurname();
-        if (this.hasAge()) personBuilder.age = this.getAge().getAsInt();
-        if (this.hasAddress()) personBuilder.address = this.getAddress();
+        personBuilder.setName(this.getName());
+        personBuilder.setSurname(this.getSurname());
+        if (this.hasAge()) personBuilder.setAge(this.getAge().getAsInt());
+        if (this.hasAddress()) personBuilder.setAddress(this.getAddress());
         return personBuilder;
     }
 

@@ -1,9 +1,9 @@
-public class PersonBuilder implements IPersonBuilder {
+public class PersonBuilder implements PersonBuildable {
 
-    protected String name;
-    protected String surname;
-    protected String address;
-    protected int age = -1;
+    private String name;
+    private String surname;
+    private String address;
+    private int age;
 
     public PersonBuilder setName(String name) {
         this.name = name;
@@ -28,7 +28,7 @@ public class PersonBuilder implements IPersonBuilder {
 
     public Person build() throws IllegalStateException {
         if ((this.name != null) && (this.surname != null)) {
-            if (this.age < 0) {
+            if (this.age == 0) {
                 return new Person(this.name, this.surname);
             } else return new Person(this.name, this.surname, this.age);
         } else throw new IllegalStateException("Не достаточно данных");
